@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\isaia\DotNetDnDCombatTracker\DnDCombatTracker\App.xaml
-11407045341
+2-1338769589
 
-61950824819
+7-1083343940
 198-556154604
-MainWindow.xaml;
+AddEnemyWindow.xaml;MainWindow.xaml;
 
-False
+True
 

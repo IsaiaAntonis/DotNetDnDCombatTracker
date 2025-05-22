@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DnDCombatTracker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Background="#FF9B9B9B">
     <Grid>
+        <Label Content="Hello DM please choose an option" HorizontalAlignment="Center" Margin="0,24,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" FontFamily="Bahnschrift Condensed"/>
+        <Button Name="AddEnemyButton" Content="Add Enemy To the library" HorizontalAlignment="Left" Margin="81,217,0,0" VerticalAlignment="Top" Height="100" Width="250" Click="AddEnemyButton_Click"/>
+        <Button Name="StartEncounterButton" Content="Start an Encounter" HorizontalAlignment="Left" Margin="456,217,0,0" VerticalAlignment="Top" Height="100" Width="250" Click="StartEncounterButton_Click"/>
 
     </Grid>
 </Window>

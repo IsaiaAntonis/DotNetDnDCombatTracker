@@ -20,5 +20,16 @@ namespace DnDCombatTracker
         {
             InitializeComponent();
         }
+
+        private void AddEnemyButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddEnemyWindow addEnemyWindow = new AddEnemyWindow();
+            addEnemyWindow.ShowDialog();
+        }
+
+        private void StartEncounterButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
