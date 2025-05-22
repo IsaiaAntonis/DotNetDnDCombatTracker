@@ -1,0 +1,5 @@
+C:\Users\isaia\DotNetDnDCombatTracker\DnDCombatTracker\bin\Release\net8.0-windows\app.publish\DnDCombatTracker.exe
+C:\Users\isaia\DotNetDnDCombatTracker\DnDCombatTracker\bin\Release\net8.0-windows\app.publish\DnDCombatTracker.dll
+C:\Users\isaia\DotNetDnDCombatTracker\DnDCombatTracker\bin\Release\net8.0-windows\app.publish\DnDCombatTracker.deps.json
+C:\Users\isaia\DotNetDnDCombatTracker\DnDCombatTracker\bin\Release\net8.0-windows\app.publish\DnDCombatTracker.runtimeconfig.json
+C:\Users\isaia\DotNetDnDCombatTracker\DnDCombatTracker\bin\Release\net8.0-windows\app.publish\DnDCombatTracker.pdb
