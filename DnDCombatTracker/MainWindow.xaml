@@ -8,8 +8,9 @@
         Title="MainWindow" Height="450" Width="800" Background="#FF9B9B9B">
     <Grid>
         <Label Content="Hello DM please choose an option" HorizontalAlignment="Center" Margin="0,24,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" FontFamily="Bahnschrift Condensed"/>
-        <Button Name="AddEnemyButton" Content="Add Enemy To the library" HorizontalAlignment="Left" Margin="81,217,0,0" VerticalAlignment="Top" Height="100" Width="250" Click="AddEnemyButton_Click"/>
-        <Button Name="StartEncounterButton" Content="Start an Encounter" HorizontalAlignment="Left" Margin="456,217,0,0" VerticalAlignment="Top" Height="100" Width="250" Click="StartEncounterButton_Click"/>
+        <Button Name="AddEnemyButton" Content="Add Enemy To the library" HorizontalAlignment="Left" Margin="37,134,0,0" VerticalAlignment="Top" Height="100" Width="250" Click="AddEnemyButton_Click"/>
+        <Button Name="StartEncounterButton" Content="Start an Encounter" HorizontalAlignment="Left" Margin="501,129,0,0" VerticalAlignment="Top" Height="100" Width="250" Click="StartEncounterButton_Click"/>
+        <Button Name="loadEncounterButton" Content="Load an encounter" HorizontalAlignment="Center" Margin="0,260,0,0" VerticalAlignment="Top" Width="250" Height="100" Click="loadEncounterButton_Click"/>
 
     </Grid>
 </Window>

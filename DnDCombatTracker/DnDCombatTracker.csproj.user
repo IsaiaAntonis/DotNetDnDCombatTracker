@@ -10,6 +10,9 @@
     <Compile Update="AddEnemyWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="EncounterSelectWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="EncounterSetupWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -19,6 +22,9 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="AddEnemyWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="EncounterSelectWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="EncounterSetupWindow.xaml">
