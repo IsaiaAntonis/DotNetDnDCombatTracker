@@ -23,6 +23,7 @@ namespace DnDCombatTracker
         {
             InitializeComponent();
             LoadEnemiesIntoList();
+            
         }
 
         private void LoadEnemiesIntoList()
@@ -36,11 +37,21 @@ namespace DnDCombatTracker
                 enemyTypeListBox.Items.Add(System.IO.Path.GetFileNameWithoutExtension(File));
             }
 
-           
-            
+       
 
 
+        }
 
+        private void enemyTypeListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (enemyTypeListBox.SelectedItem != null)
+            {
+                string selected_enemy = enemyTypeListBox.SelectedItem.ToString();
+
+                AddEnemyWindow showSelectedEnemyWindow = new AddEnemyWindow(selected_enemy);
+                showSelectedEnemyWindow.ShowDialog();
+
+            }
         }
     }
 }

@@ -23,7 +23,16 @@ namespace DnDCombatTracker
         public AddEnemyWindow()
         {
             InitializeComponent();
+            closeButton.Visibility = Visibility.Hidden;
         }
+        public AddEnemyWindow(string enemy)
+        {
+            InitializeComponent();
+            ShowSelectedEnemy(enemy);
+            SaveButton.Visibility = Visibility.Hidden;
+            CancelButton.Visibility = Visibility.Hidden;
+        }
+
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
@@ -81,6 +90,55 @@ namespace DnDCombatTracker
             MessageBox.Show($"Did you forget to set the enemy {ForgottenItem} ?", "Warning");
         }
         private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        public void ShowSelectedEnemy(string enemy)
+        {
+            string folderPath = Environment.CurrentDirectory;
+            string filePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(folderPath, $@"..\..\..\EnemyTypes\{enemy}.txt"));
+
+            try
+            {
+                using StreamReader streamReader = new StreamReader(filePath);
+                List<string> enemyElementList = new List<string>();
+                while (!streamReader.EndOfStream) {
+                    enemyElementList.Add(streamReader.ReadLine());
+                }
+                EnemyNameTextBox.IsEnabled = false;
+                HpTextBox.IsEnabled = false;
+                AcTextBox.IsEnabled = false;
+                StrTextbox.IsEnabled = false;
+                DexTextbox.IsEnabled = false;
+                ConTextbox.IsEnabled = false;
+                IntTextbox.IsEnabled = false;
+                WisTextbox.IsEnabled = false;
+                ChaTextbox.IsEnabled = false;
+                noteTextBox.IsEnabled = false;
+
+                EnemyNameTextBox.Text = enemyElementList[0].Split(':').Last();
+                HpTextBox.Text = enemyElementList[1].Split(':').Last(); 
+                AcTextBox.Text = enemyElementList[2].Split(':').Last();
+                StrTextbox.Text = enemyElementList[3].Split(':').Last();
+                DexTextbox.Text = enemyElementList[4].Split(':').Last();
+                ConTextbox.Text = enemyElementList[5].Split(':').Last();
+                IntTextbox.Text = enemyElementList[6].Split(':').Last();
+                WisTextbox.Text = enemyElementList[7].Split(':').Last();
+                ChaTextbox.Text = enemyElementList[8].Split(':').Last();
+                noteTextBox.Text = enemyElementList[9].Split(':').Last();
+
+
+            }
+            catch (Exception ex) {
+            
+                MessageBox.Show(ex.Message.ToString());
+
+            }
+
+        }
+
+        private void closeButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

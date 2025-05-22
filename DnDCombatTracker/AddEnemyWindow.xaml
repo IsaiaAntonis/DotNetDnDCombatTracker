@@ -28,6 +28,7 @@
         <Label  Content="Additional Notes" HorizontalAlignment="Left" Margin="90,244,0,0" VerticalAlignment="Top"/>
         <Button Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="105,17,0,0" VerticalAlignment="Top" Height="30" Width="70" Click="CancelButton_Click"/>
         <Button Name="SaveButton" Content="Save" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top" Height="30" Width="70" Click="SaveButton_Click"/>
+        <Button Name="closeButton" Content="Close" HorizontalAlignment="Left" Margin="712,11,0,0" VerticalAlignment="Top" Height="39" Width="65" Click="closeButton_Click"/>
 
     </Grid>
 </Window>
