@@ -69,7 +69,7 @@ namespace DnDCombatTracker {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/DnDCombatTracker;V1.0.0.0;component/encounterselectwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/DnDCombatTracker;component/encounterselectwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\EncounterSelectWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

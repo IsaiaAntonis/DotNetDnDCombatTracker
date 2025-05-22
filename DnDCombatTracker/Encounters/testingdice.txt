@@ -1,0 +1,11 @@
+encounter name: testingdice
+Goblin
+Goblin
+Goblin
+Goblin
+Goblin
+Kobold
+Kobold
+Kobold
+Skeleton
+Skeleton

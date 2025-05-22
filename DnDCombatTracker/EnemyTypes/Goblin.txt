@@ -8,3 +8,4 @@ INT: +0
 WIS: -1
 CHA: -1
 Additional notes: Skills Stealth +6 Senses Darkvision 60 Ft.,  passive Perception 9 Languages Common, Goblin Challenge 1/4 (50 XP) Nimble Escape. The goblin can take the Disengage or Hide action as a bonus action on each of its turns
+Hit Dice: 2D6+0

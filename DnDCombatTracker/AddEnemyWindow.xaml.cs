@@ -25,7 +25,7 @@ namespace DnDCombatTracker
             InitializeComponent();
             closeButton.Visibility = Visibility.Hidden;
         }
-        public AddEnemyWindow(string enemy)
+        public AddEnemyWindow(string enemy ,bool encounter = false)
         {
             InitializeComponent();
       
@@ -41,6 +41,7 @@ namespace DnDCombatTracker
             WisTextbox.IsEnabled = false;
             ChaTextbox.IsEnabled = false;
             noteTextBox.IsEnabled = false;
+            hitDiceComboBox.IsEnabled = false;
 
             ShowSelectedEnemy(enemy);
         }
@@ -86,6 +87,7 @@ namespace DnDCombatTracker
                 streamWriter.WriteLine($"WIS: {WisTextbox.Text}");
                 streamWriter.WriteLine($"CHA: {ChaTextbox.Text}");
                 streamWriter.WriteLine($"Additional notes: {noteTextBox.Text}");
+                streamWriter.WriteLine($"Hit Dice: {hitDiceBoxAmount.Text}D{hitDiceBoxSize.Text}{hitDiceComboBox.Text}{hitDiceBoxModifier.Text}");
                 MessageBox.Show($"Enemy succesfully added to {filePath}");
             }
             catch(Exception ex) {
@@ -131,6 +133,23 @@ namespace DnDCombatTracker
                 ChaTextbox.Text = enemyElementList[8].Split(':').Last();
                 noteTextBox.Text = enemyElementList[9].Split(':').Last();
 
+                string[] hitDiceElements = enemyElementList[10].Split(new Char[] { ':', 'D', '-', '+', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+
+                List<string> numericParts = new List<string>();
+
+                foreach (string part in hitDiceElements)
+                {
+                    if (int.TryParse(part, out _))
+                    {
+                        numericParts.Add(part);
+                    }
+                }
+        
+                    hitDiceBoxAmount.Text = numericParts[0];  
+                    hitDiceBoxSize.Text = numericParts[1];     
+                    hitDiceBoxModifier.Text = numericParts[2]; 
+                
 
             }
             catch (Exception ex) {
@@ -145,5 +164,7 @@ namespace DnDCombatTracker
         {
             this.Close();
         }
+
+
     }
 }

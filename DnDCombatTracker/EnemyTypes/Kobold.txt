@@ -8,3 +8,4 @@ INT: -1
 WIS: +0
 CHA: -1
 Additional notes: Senses Darkvision 60 Ft., passive Perception 8 Languages Common, Draconic Challenge 1/8 (25 XP) Pack Tactics. Has advantage on attack rolls if an ally is within 5 ft of the target. Sunlight Sensitivity. Disadvantage on attack rolls and Perception checks relying on sight in sunlight. Attacks: Dagger +4 to hit (4 damage), Sling +4 to hit (4 damage)
+Hit Dice: 2D6-2
