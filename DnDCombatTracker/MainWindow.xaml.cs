@@ -29,7 +29,8 @@ namespace DnDCombatTracker
 
         private void StartEncounterButton_Click(object sender, RoutedEventArgs e)
         {
-
+            EncounterSetupWindow encounterSetupWindow = new EncounterSetupWindow();
+            encounterSetupWindow.ShowDialog();
         }
     }
 }
