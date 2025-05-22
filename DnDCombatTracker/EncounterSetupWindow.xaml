@@ -17,6 +17,8 @@
         <Label Content="Chosen enemies" HorizontalAlignment="Left" Margin="601,17,0,0" VerticalAlignment="Top"/>
         <Button x:Name="applyButton" Content="Apply" HorizontalAlignment="Left" Margin="266,103,0,0" VerticalAlignment="Top" Height="45" Width="76" Click="applyButton_Click"/>
         <Button x:Name="startEncounterButton" Content="Start Encouter" HorizontalAlignment="Center" Margin="0,322,0,0" VerticalAlignment="Top" Height="86" Width="120" Click="startEncounterButton_Click"/>
+        <TextBox x:Name="encounterName" HorizontalAlignment="Left" Margin="418,66,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Choose encounter name" HorizontalAlignment="Left" Margin="418,38,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

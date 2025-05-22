@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +20,40 @@ namespace DnDCombatTracker
     /// </summary>
     public partial class EncounterWindow : Window
     {
-        public EncounterWindow()
+        public EncounterWindow(string encountername)
         {
             InitializeComponent();
+            InitializeEnemyList(encountername);
+
+        }
+
+        private void InitializeEnemyList(string encountername)
+        {
+            string folderPath = Environment.CurrentDirectory;
+            string filePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(folderPath, $@"..\..\..\Encounters\{encountername}.txt"));
+
+            try
+            {
+                using StreamReader streamReader = new StreamReader(filePath);
+                List<string> encounterElementList = new List<string>();
+                while (!streamReader.EndOfStream)
+                {
+
+                    encounterElementList.Add(streamReader.ReadLine());
+
+                }
+                this.Title = encounterElementList[0].Split(':').Last();
+                foreach (string monster in encounterElementList) {
+                    if (!(monster == encounterElementList[0])) {
+                        encounterEnemyListbox.Items.Add(monster);
+                    }
+                   
+                }
+                amountOfEnemiesTextBox.Text = (encounterElementList.Count -1).ToString();
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.ToString());
+            }
         }
     }
 }

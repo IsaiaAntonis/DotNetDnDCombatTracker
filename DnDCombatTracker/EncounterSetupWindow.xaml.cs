@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -69,9 +70,31 @@ namespace DnDCombatTracker
 
         private void startEncounterButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
-            EncounterWindow encounterWindow = new EncounterWindow();
-            encounterWindow.ShowDialog();
+            string folderPath = Environment.CurrentDirectory;
+            if (encounterName.Text.Length > 0 && enemyAmountListBox.Items.Count >0)
+            {
+                string filePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(folderPath, $@"..\..\..\Encounters\{encounterName.Text}.txt"));
+                try
+                {
+                    using StreamWriter encounterWriter = new StreamWriter(filePath);
+                    encounterWriter.WriteLine($"encounter name: {encounterName.Text}");
+                    foreach (string enemy in enemyAmountListBox.Items)
+                    {
+                        encounterWriter.WriteLine($"{enemy}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+                this.Close();
+                EncounterWindow encounterWindow = new EncounterWindow(encounterName.Text);
+                encounterWindow.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Your encounter needs a name and enemies!");
+            }
         }
     }
 }
