@@ -1,0 +1,11 @@
+Enemy name: Zombie
+HP: 22
+AC: 8
+STR: +1
+DEX: -2
+CON: +3
+INT: -4
+WIS: 0
+CHA: -3
+Additional notes: No notes
+Hit Dice: 3D8+3

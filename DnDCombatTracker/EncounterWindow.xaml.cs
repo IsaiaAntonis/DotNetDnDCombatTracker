@@ -86,6 +86,7 @@ namespace DnDCombatTracker
                     if (newHp < 0)
                     {
                         encounterEnemyListbox.Items.RemoveAt(index);
+                        amountOfEnemiesTextBox.Text = (Int32.Parse(amountOfEnemiesTextBox.Text) - 1).ToString();
                         return;
                     }
 

@@ -1,0 +1,5 @@
+encounter name:   undeadhorde
+14 hp #21 Orc
+17 hp #22 Orc
+11 hp #23 Orc
+13 hp #24 Orc
