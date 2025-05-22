@@ -48,8 +48,17 @@ namespace DnDCombatTracker
                 foreach (string monster in encounterElementList) {
                     if (!(monster == encounterElementList[0])) {
 
-                        encounterEnemyListbox.Items.Add($"#{monsterNumber} {monster}");
-                        monsterNumber++;
+                        if (monster.Contains("#")) {
+
+                            encounterEnemyListbox.Items.Add($"{monster}");
+
+                        }
+                        else
+                        {
+                            encounterEnemyListbox.Items.Add($"#{monsterNumber} {monster}");
+                            monsterNumber++;
+                        }
+
                     }
                    
                 }
@@ -150,5 +159,26 @@ namespace DnDCombatTracker
             return hp;
         }
 
+        private void saveEncounterButton_Click(object sender, RoutedEventArgs e)
+        {
+            string folderPath = Environment.CurrentDirectory;
+            string filePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(folderPath, $@"..\..\..\Encounters\{this.Title.Trim()}.txt"));
+
+            try
+            {
+                using StreamWriter encounterWriter = new StreamWriter(filePath);
+                encounterWriter.WriteLine($"encounter name: {this.Title}");
+                foreach (string enemy in encounterEnemyListbox.Items)
+                {
+                    encounterWriter.WriteLine($"{enemy}");
+                }
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            
+        }
     }
 }
