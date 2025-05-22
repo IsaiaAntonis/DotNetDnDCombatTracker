@@ -28,9 +28,21 @@ namespace DnDCombatTracker
         public AddEnemyWindow(string enemy)
         {
             InitializeComponent();
-            ShowSelectedEnemy(enemy);
+      
             SaveButton.Visibility = Visibility.Hidden;
             CancelButton.Visibility = Visibility.Hidden;
+            EnemyNameTextBox.IsEnabled = false;
+            HpTextBox.IsEnabled = false;
+            AcTextBox.IsEnabled = false;
+            StrTextbox.IsEnabled = false;
+            DexTextbox.IsEnabled = false;
+            ConTextbox.IsEnabled = false;
+            IntTextbox.IsEnabled = false;
+            WisTextbox.IsEnabled = false;
+            ChaTextbox.IsEnabled = false;
+            noteTextBox.IsEnabled = false;
+
+            ShowSelectedEnemy(enemy);
         }
 
 
@@ -106,16 +118,7 @@ namespace DnDCombatTracker
                 while (!streamReader.EndOfStream) {
                     enemyElementList.Add(streamReader.ReadLine());
                 }
-                EnemyNameTextBox.IsEnabled = false;
-                HpTextBox.IsEnabled = false;
-                AcTextBox.IsEnabled = false;
-                StrTextbox.IsEnabled = false;
-                DexTextbox.IsEnabled = false;
-                ConTextbox.IsEnabled = false;
-                IntTextbox.IsEnabled = false;
-                WisTextbox.IsEnabled = false;
-                ChaTextbox.IsEnabled = false;
-                noteTextBox.IsEnabled = false;
+
 
                 EnemyNameTextBox.Text = enemyElementList[0].Split(':').Last();
                 HpTextBox.Text = enemyElementList[1].Split(':').Last(); 

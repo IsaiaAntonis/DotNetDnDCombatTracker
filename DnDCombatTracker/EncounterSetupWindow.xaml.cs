@@ -53,5 +53,25 @@ namespace DnDCombatTracker
 
             }
         }
+
+        private void applyButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (enemyTypeListBox.SelectedItem != null)
+            {
+                int amountOfEnemies = Int32.Parse(enemyAmountTextBox.Text);
+                for (int i = 0; i < amountOfEnemies; i++)
+                {
+                    enemyAmountListBox.Items.Add(enemyTypeListBox.SelectedItem);
+                }
+                
+            }
+        }
+
+        private void startEncounterButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            EncounterWindow encounterWindow = new EncounterWindow();
+            encounterWindow.ShowDialog();
+        }
     }
 }

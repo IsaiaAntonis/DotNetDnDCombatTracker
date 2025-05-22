@@ -1,0 +1,10 @@
+Enemy Name: Orc
+HP: 15
+AC: 13
+STR: +3
+DEX: +1
+CON: +3
+INT: -2
+WIS: +0
+CHA: +0
+Additional notes: Skills Intimidation +2 Senses Darkvision 60 Ft., passive Perception 10 Languages Common, Orc Challenge 1/2 (100 XP) Aggressive. As a bonus action, the orc can move up to its speed toward a hostile creature it can see. Attacks: Greataxe +5 to hit (9 damage), Javelin +5 to hit (6 damage)

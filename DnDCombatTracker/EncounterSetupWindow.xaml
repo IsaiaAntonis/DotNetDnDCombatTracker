@@ -15,6 +15,8 @@
         <TextBox Name="enemyAmountTextBox" HorizontalAlignment="Left" Margin="244,66,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120"/>
         <ListBox Name="enemyAmountListBox" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="601,38,24,26" Width="175" Height="370"/>
         <Label Content="Chosen enemies" HorizontalAlignment="Left" Margin="601,17,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="applyButton" Content="Apply" HorizontalAlignment="Left" Margin="266,103,0,0" VerticalAlignment="Top" Height="45" Width="76" Click="applyButton_Click"/>
+        <Button x:Name="startEncounterButton" Content="Start Encouter" HorizontalAlignment="Center" Margin="0,322,0,0" VerticalAlignment="Top" Height="86" Width="120" Click="startEncounterButton_Click"/>
 
     </Grid>
 </Window>

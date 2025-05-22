@@ -23,3 +23,5 @@ C:\Users\isaia\DotNetDnDCombatTracker\DnDCombatTracker\obj\Debug\net8.0-windows\
 C:\Users\isaia\DotNetDnDCombatTracker\DnDCombatTracker\obj\Debug\net8.0-windows\ref\DnDCombatTracker.dll
 C:\Users\isaia\DotNetDnDCombatTracker\DnDCombatTracker\obj\Debug\net8.0-windows\EncounterSetupWindow.g.cs
 C:\Users\isaia\DotNetDnDCombatTracker\DnDCombatTracker\obj\Debug\net8.0-windows\EncounterSetupWindow.baml
+C:\Users\isaia\DotNetDnDCombatTracker\DnDCombatTracker\obj\Debug\net8.0-windows\EncounterWindow.g.cs
+C:\Users\isaia\DotNetDnDCombatTracker\DnDCombatTracker\obj\Debug\net8.0-windows\EncounterWindow.baml
