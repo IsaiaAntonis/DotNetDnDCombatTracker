@@ -1,2 +1,0 @@
-encounter name:  hi
-15 hp #1 Skeleton

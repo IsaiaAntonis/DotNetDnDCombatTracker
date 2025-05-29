@@ -19,6 +19,21 @@ namespace DnDCombatTracker
         public MainWindow()
         {
             InitializeComponent();
+            this.Title = "Isaia's DND Encounter Tracker ";
+            CheckStartFolderExistence("EnemyTypes");
+            CheckStartFolderExistence("Encounters");
+        }
+
+        private void CheckStartFolderExistence(string folder)
+        {
+            string folderPath = System.IO.Path.Combine(FileHandeler.programPath, folder);
+            try
+            {
+                FileHandeler.CheckIfDirectoryExists(folderPath);
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void AddEnemyButton_Click(object sender, RoutedEventArgs e)

@@ -1,0 +1,5 @@
+C:\Users\isaia\Desktop\DnDCombatTracker\DnDCombatTracker.exe
+C:\Users\isaia\Desktop\DnDCombatTracker\DnDCombatTracker.dll
+C:\Users\isaia\Desktop\DnDCombatTracker\DnDCombatTracker.deps.json
+C:\Users\isaia\Desktop\DnDCombatTracker\DnDCombatTracker.runtimeconfig.json
+C:\Users\isaia\Desktop\DnDCombatTracker\DnDCombatTracker.pdb

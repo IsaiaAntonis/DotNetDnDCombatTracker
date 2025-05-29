@@ -22,13 +22,15 @@ namespace DnDCombatTracker
         public EncounterSelectWindow()
         {
             InitializeComponent();
+            this.Title = "Encounter Select";
             InitializeEncounterListbox();
         }
 
         private void InitializeEncounterListbox()
         {
-            string folderPath = Environment.CurrentDirectory;
-            string filePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(folderPath, $@"..\..\..\Encounters"));
+            string folderPath = FileHandeler.programPath; //Environment.CurrentDirectory;
+
+            string filePath = System.IO.Path.Combine(folderPath, "Encounters");
             string[] Files = System.IO.Directory.GetFiles(filePath);
 
             foreach (string File in Files)

@@ -23,14 +23,15 @@ namespace DnDCombatTracker
         public EncounterSetupWindow()
         {
             InitializeComponent();
+            this.Title = "Enemy encounter setup";
             LoadEnemiesIntoList();
             
         }
 
         private void LoadEnemiesIntoList()
         {
-            string folderPath = Environment.CurrentDirectory;
-            string filePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(folderPath, $@"..\..\..\EnemyTypes"));
+            string folderPath = FileHandeler.programPath; //Environment.CurrentDirectory;
+            string filePath = System.IO.Path.Combine(folderPath, "EnemyTypes");
             string[] Files = System.IO.Directory.GetFiles(filePath);
             
             foreach (string File in Files)
@@ -70,10 +71,10 @@ namespace DnDCombatTracker
 
         private void startEncounterButton_Click(object sender, RoutedEventArgs e)
         {
-            string folderPath = Environment.CurrentDirectory;
+            string folderPath = FileHandeler.programPath; //Environment.CurrentDirectory;
             if (encounterName.Text.Length > 0 && enemyAmountListBox.Items.Count >0)
             {
-                string filePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(folderPath, $@"..\..\..\Encounters\{encounterName.Text}.txt"));
+                string filePath = System.IO.Path.Combine(folderPath, $@"Encounters\{encounterName.Text}.txt");
                 try
                 {
                     using StreamWriter encounterWriter = new StreamWriter(filePath);

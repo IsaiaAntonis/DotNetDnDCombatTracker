@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\isaia\DotNetDnDCombatTracker\DnDCombatTracker\App.xaml
 51902460935
 
-10-1678633677
+11-878440214
 198-556154604
 AddEnemyWindow.xaml;EncounterSelectWindow.xaml;EncounterSetupWindow.xaml;EncounterWindow.xaml;MainWindow.xaml;
 
-False
+True
 

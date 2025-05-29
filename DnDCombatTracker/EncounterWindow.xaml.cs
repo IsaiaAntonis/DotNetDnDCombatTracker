@@ -29,8 +29,8 @@ namespace DnDCombatTracker
 
         private void InitializeEnemyList(string encountername)
         {
-            string folderPath = Environment.CurrentDirectory;
-            string filePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(folderPath, $@"..\..\..\Encounters\{encountername}.txt"));
+            string folderPath = FileHandeler.programPath; //Environment.CurrentDirectory;
+            string filePath = System.IO.Path.Combine(folderPath, $@"Encounters\{encountername}.txt");
   
 
             try
@@ -109,8 +109,8 @@ namespace DnDCombatTracker
         public int GetEnemyHP(string enemy)
         {
             int hp = 0;
-            string folderPath = Environment.CurrentDirectory;
-            string filePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(folderPath, $@"..\..\..\EnemyTypes\{enemy}.txt"));
+            string folderPath = FileHandeler.programPath; //Environment.CurrentDirectory;
+            string filePath = System.IO.Path.Combine(folderPath, $@"EnemyTypes\{enemy}.txt");
 
             try
             {
@@ -162,8 +162,8 @@ namespace DnDCombatTracker
 
         private void saveEncounterButton_Click(object sender, RoutedEventArgs e)
         {
-            string folderPath = Environment.CurrentDirectory;
-            string filePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(folderPath, $@"..\..\..\Encounters\{this.Title.Trim()}.txt"));
+            string folderPath = FileHandeler.programPath; //Environment.CurrentDirectory;
+            string filePath = System.IO.Path.Combine(folderPath, $@"Encounters\{this.Title.Trim()}.txt");
 
             try
             {

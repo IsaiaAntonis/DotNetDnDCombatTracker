@@ -27,7 +27,3 @@ C:\Users\isaia\DotNetDnDCombatTracker\DnDCombatTracker\obj\Release\net8.0-window
 C:\Users\isaia\DotNetDnDCombatTracker\DnDCombatTracker\obj\Release\net8.0-windows\DnDCombatTracker.pdb
 C:\Users\isaia\DotNetDnDCombatTracker\DnDCombatTracker\obj\Release\net8.0-windows\DnDCombatTracker.genruntimeconfig.cache
 C:\Users\isaia\DotNetDnDCombatTracker\DnDCombatTracker\obj\Release\net8.0-windows\ref\DnDCombatTracker.dll
-C:\Users\isaia\DotNetDnDCombatTracker\DnDCombatTracker\bin\Release\net8.0-windows\DnDCombatTracker.dll.manifest
-C:\Users\isaia\DotNetDnDCombatTracker\DnDCombatTracker\bin\Release\net8.0-windows\DnDCombatTracker.application
-C:\Users\isaia\DotNetDnDCombatTracker\DnDCombatTracker\obj\Release\net8.0-windows\DnDCombatTracker.dll.manifest
-C:\Users\isaia\DotNetDnDCombatTracker\DnDCombatTracker\obj\Release\net8.0-windows\DnDCombatTracker.application

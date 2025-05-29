@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DnDCombatTracker
 {
@@ -23,15 +24,17 @@ namespace DnDCombatTracker
         public AddEnemyWindow()
         {
             InitializeComponent();
+            this.Title = "Enemy Creator";
             closeButton.Visibility = Visibility.Hidden;
         }
         public AddEnemyWindow(string enemy ,bool encounter = false)
         {
             InitializeComponent();
-      
+            this.Title = "Enemy Viewer";
             SaveButton.Visibility = Visibility.Hidden;
             CancelButton.Visibility = Visibility.Hidden;
             EnemyNameTextBox.IsEnabled = false;
+
             HpTextBox.IsEnabled = false;
             AcTextBox.IsEnabled = false;
             StrTextbox.IsEnabled = false;
@@ -41,7 +44,11 @@ namespace DnDCombatTracker
             WisTextbox.IsEnabled = false;
             ChaTextbox.IsEnabled = false;
             noteTextBox.IsEnabled = false;
+
             hitDiceComboBox.IsEnabled = false;
+            hitDiceBoxSize.IsEnabled = false;
+            hitDiceBoxAmount.IsEnabled = false;
+            hitDiceBoxModifier.IsEnabled = false;
 
             ShowSelectedEnemy(enemy);
         }
@@ -71,12 +78,15 @@ namespace DnDCombatTracker
 
         private void AddEnemyToLibrary()
         {
-            string folderPath = Environment.CurrentDirectory;
-            string filePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(folderPath, $@"..\..\..\EnemyTypes\{EnemyNameTextBox.Text}.txt"));
+           
+
+            string filePath = System.IO.Path.Combine(FileHandeler.programPath, "EnemyTypes");
+            string monsterPath = System.IO.Path.Combine(filePath, $"{ EnemyNameTextBox.Text}.txt");
+
 
             try
             {
-                using StreamWriter streamWriter = new StreamWriter(filePath);
+                using StreamWriter streamWriter = new StreamWriter(monsterPath);
                 streamWriter.WriteLine($"Enemy name: {EnemyNameTextBox.Text}");
                 streamWriter.WriteLine($"HP: {HpTextBox.Text}");
                 streamWriter.WriteLine($"AC: {AcTextBox.Text}");
@@ -110,12 +120,13 @@ namespace DnDCombatTracker
 
         public void ShowSelectedEnemy(string enemy)
         {
-            string folderPath = Environment.CurrentDirectory;
-            string filePath = System.IO.Path.GetFullPath(System.IO.Path.Combine(folderPath, $@"..\..\..\EnemyTypes\{enemy}.txt"));
+
+            string filePath = System.IO.Path.Combine(FileHandeler.programPath, "EnemyTypes");
+            string monsterPath = System.IO.Path.Combine(filePath, $"{enemy}.txt");
 
             try
             {
-                using StreamReader streamReader = new StreamReader(filePath);
+                using StreamReader streamReader = new StreamReader(monsterPath);
                 List<string> enemyElementList = new List<string>();
                 while (!streamReader.EndOfStream) {
                     enemyElementList.Add(streamReader.ReadLine());
@@ -132,6 +143,16 @@ namespace DnDCombatTracker
                 WisTextbox.Text = enemyElementList[7].Split(':').Last();
                 ChaTextbox.Text = enemyElementList[8].Split(':').Last();
                 noteTextBox.Text = enemyElementList[9].Split(':').Last();
+
+
+                if (enemyElementList[10].Contains('+'))
+                {
+                    hitDiceComboBox.Text ="+";
+                }
+                else
+                {
+                    hitDiceComboBox.Text = "-";
+                }
 
                 string[] hitDiceElements = enemyElementList[10].Split(new Char[] { ':', 'D', '-', '+', ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
