@@ -53,24 +53,10 @@ namespace DndTracker
             goblin.HP = goblin.HitDiceFlatModifier +  generatedhp ;
 
 
-
+   
             goblin.ImagePath = @"Images\goblin.jpg";
 
-
-            if (!string.IsNullOrWhiteSpace(goblin.ImagePath))
-            {
-                Image goblinImage = new Image
-                {
-                    Width = 64,
-                    Height = 64,
-                    Source = new BitmapImage(new Uri(goblin.ImagePath, UriKind.Relative))
-                };
-
-                Canvas.SetLeft(goblinImage, 100);
-                Canvas.SetTop(goblinImage, 150);
-                paperCanvas.Children.Add(goblinImage);
-            }
-
+     
 
             return goblin;
         }
@@ -78,6 +64,8 @@ namespace DndTracker
         private void button_Click(object sender, RoutedEventArgs e)
         {
 
+
+            // this listbox will be deleted when we can play with the images
             List<Enemy> listOfEnemies = new List<Enemy>();
 
             for (int i = 0; i < Convert.ToInt64(AmountOfEnemiesTextBox.Text); i++)
@@ -90,10 +78,26 @@ namespace DndTracker
 
             }
 
+            // this creates a image for each goblin in enemies
 
+            foreach (Enemy goblin in listOfEnemies)
+            {
+                 if (!string.IsNullOrWhiteSpace(goblin.ImagePath))
+                    {
+                        Image goblinImage = new Image
+                        {
+                            Width = 64,
+                            Height = 64,
+                            Source = new BitmapImage(new Uri(goblin.ImagePath, UriKind.Relative))
+                        };
 
+                        Canvas.SetLeft(goblinImage, 100);
+                        Canvas.SetTop(goblinImage, 150);
+                        paperCanvas.Children.Add(goblinImage);
+                    }
 
-           
+            }
+
         }
     }
 }
