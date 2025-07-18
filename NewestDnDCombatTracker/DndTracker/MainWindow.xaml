@@ -1,0 +1,21 @@
+﻿<Window x:Class="DndTracker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DndTracker"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="151*"/>
+            <ColumnDefinition Width="649*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="button" Grid.Column="2" Content="Button" HorizontalAlignment="Left" Margin="99,133,0,0" VerticalAlignment="Top" Click="button_Click"/>
+        <TextBox x:Name="AmountOfEnemiesTextBox"  Grid.Column="2" HorizontalAlignment="Left" Margin="325,135,0,0" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Width="20"/>
+        <ListBox x:Name="listBox" Grid.Column="2" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="154,165,344,28" />
+        <Canvas Name="paperCanvas" Background="LightGray" Grid.ColumnSpan="2"/>
+
+    </Grid>
+</Window>
