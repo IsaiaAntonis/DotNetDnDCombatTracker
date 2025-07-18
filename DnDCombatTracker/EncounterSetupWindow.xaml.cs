@@ -20,6 +20,8 @@ namespace DnDCombatTracker
     /// </summary>
     public partial class EncounterSetupWindow : Window
     {
+
+        private Random random = new Random();
         public EncounterSetupWindow()
         {
             InitializeComponent();
@@ -60,7 +62,7 @@ namespace DnDCombatTracker
         {
             if (enemyTypeListBox.SelectedItem != null)
             {
-                int amountOfEnemies = Int32.Parse(enemyAmountTextBox.Text);
+                int amountOfEnemies = Int32.Parse(enemyAmountTextBox.Text); // add a condition here that refuses string and only accepts integers
                 for (int i = 0; i < amountOfEnemies; i++)
                 {
                     enemyAmountListBox.Items.Add(enemyTypeListBox.SelectedItem);
@@ -72,6 +74,10 @@ namespace DnDCombatTracker
         private void startEncounterButton_Click(object sender, RoutedEventArgs e)
         {
             string folderPath = FileHandeler.programPath; //Environment.CurrentDirectory;
+
+
+
+
             if (encounterName.Text.Length > 0 && enemyAmountListBox.Items.Count >0)
             {
                 string filePath = System.IO.Path.Combine(folderPath, $@"Encounters\{encounterName.Text}.txt");
@@ -79,9 +85,22 @@ namespace DnDCombatTracker
                 {
                     using StreamWriter encounterWriter = new StreamWriter(filePath);
                     encounterWriter.WriteLine($"encounter name: {encounterName.Text}");
+
                     foreach (string enemy in enemyAmountListBox.Items)
                     {
-                        encounterWriter.WriteLine($"{enemy}");
+
+                        string filePath2 = System.IO.Path.Combine(folderPath, $@"EnemyTypes\{enemy}.txt");
+
+                        using StreamReader encounterReader = new StreamReader(filePath2);
+
+                        encounterReader.ReadLine();
+                        encounterReader.ReadLine();
+                        encounterReader.ReadLine();
+
+                        int inateInitiative = (int)Convert.ToInt64(encounterReader.ReadLine().Split(":").Last());
+                      
+                        int initiative = random.Next(1, 21) + inateInitiative ;
+                        encounterWriter.WriteLine($" {enemy}, initiative: { initiative }");
                     }
                 }
                 catch (Exception ex)

@@ -33,22 +33,8 @@ namespace DnDCombatTracker
             this.Title = "Enemy Viewer";
             SaveButton.Visibility = Visibility.Hidden;
             CancelButton.Visibility = Visibility.Hidden;
-            EnemyNameTextBox.IsEnabled = false;
 
-            HpTextBox.IsEnabled = false;
-            AcTextBox.IsEnabled = false;
-            StrTextbox.IsEnabled = false;
-            DexTextbox.IsEnabled = false;
-            ConTextbox.IsEnabled = false;
-            IntTextbox.IsEnabled = false;
-            WisTextbox.IsEnabled = false;
-            ChaTextbox.IsEnabled = false;
-            noteTextBox.IsEnabled = false;
-
-            hitDiceComboBox.IsEnabled = false;
-            hitDiceBoxSize.IsEnabled = false;
-            hitDiceBoxAmount.IsEnabled = false;
-            hitDiceBoxModifier.IsEnabled = false;
+            EnemyDetailsGroup.IsEnabled = false;
 
             ShowSelectedEnemy(enemy);
         }
@@ -90,6 +76,7 @@ namespace DnDCombatTracker
                 streamWriter.WriteLine($"Enemy name: {EnemyNameTextBox.Text}");
                 streamWriter.WriteLine($"HP: {HpTextBox.Text}");
                 streamWriter.WriteLine($"AC: {AcTextBox.Text}");
+                streamWriter.WriteLine($"Initiative: {AcTextBox.Text}");
                 streamWriter.WriteLine($"STR: {StrTextbox.Text}");
                 streamWriter.WriteLine($"DEX: {DexTextbox.Text}");
                 streamWriter.WriteLine($"CON: {ConTextbox.Text}");
@@ -133,16 +120,18 @@ namespace DnDCombatTracker
                 }
 
 
-                EnemyNameTextBox.Text = enemyElementList[0].Split(':').Last();
-                HpTextBox.Text = enemyElementList[1].Split(':').Last(); 
-                AcTextBox.Text = enemyElementList[2].Split(':').Last();
-                StrTextbox.Text = enemyElementList[3].Split(':').Last();
-                DexTextbox.Text = enemyElementList[4].Split(':').Last();
-                ConTextbox.Text = enemyElementList[5].Split(':').Last();
-                IntTextbox.Text = enemyElementList[6].Split(':').Last();
-                WisTextbox.Text = enemyElementList[7].Split(':').Last();
-                ChaTextbox.Text = enemyElementList[8].Split(':').Last();
-                noteTextBox.Text = enemyElementList[9].Split(':').Last();
+                EnemyNameTextBox.Text = enemyElementList[0].Split(':').Last().Trim();
+                HpTextBox.Text = enemyElementList[1].Split(':').Last().Trim();
+                AcTextBox.Text = enemyElementList[2].Split(':').Last().Trim();
+                InitiativeTextBox.Text = enemyElementList[3].Split(':').Last().Trim();
+                StrTextbox.Text = enemyElementList[4].Split(':').Last().Trim();
+                DexTextbox.Text = enemyElementList[5].Split(':').Last().Trim();
+                ConTextbox.Text = enemyElementList[6].Split(':').Last().Trim();
+                IntTextbox.Text = enemyElementList[7].Split(':').Last().Trim();
+                WisTextbox.Text = enemyElementList[8].Split(':').Last().Trim();
+                ChaTextbox.Text = enemyElementList[9].Split(':').Last().Trim();
+                noteTextBox.Text = enemyElementList[10].Split(':').Last().Trim();
+
 
 
                 if (enemyElementList[10].Contains('+'))

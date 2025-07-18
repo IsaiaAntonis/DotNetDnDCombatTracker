@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\isaia\DotNetDnDCombatTracker\DnDCombatTracker\obj\Debug\net8.0-windows\
+C:\Users\Melvin\OneDrive\Bureaublad\DotNetDnDCombatTracker\DnDCombatTracker\obj\Debug\net8.0-windows\
 DnDCombatTracker
 none
 false
-TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-C:\Users\isaia\DotNetDnDCombatTracker\DnDCombatTracker\App.xaml
+TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
+C:\Users\Melvin\OneDrive\Bureaublad\DotNetDnDCombatTracker\DnDCombatTracker\App.xaml
 51902460935
 
 9-1039827927
-198-556154604
+198-1588478740
 AddEnemyWindow.xaml;EncounterSelectWindow.xaml;EncounterSetupWindow.xaml;EncounterWindow.xaml;MainWindow.xaml;
 
 False

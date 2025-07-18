@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DnDCombatTracker")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9e1f1b00d9ef8105d510b1afb3f6b550527c931b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5867bfe7ef839720bd8c44e8010a6ae8e490cec7")]
 [assembly: System.Reflection.AssemblyProductAttribute("DnDCombatTracker")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DnDCombatTracker")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

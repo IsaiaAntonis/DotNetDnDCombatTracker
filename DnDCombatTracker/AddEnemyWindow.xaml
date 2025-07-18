@@ -8,36 +8,48 @@
         Title="AddEnemyWindow" Height="450" Width="800"  Background="#FF9B9B9B">
     <Grid>
         <TextBox x:Name="EnemyNameTextBox" HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="Enemy Name" VerticalAlignment="Top" Width="250" FontSize="24" Height="50"/>
-        <TextBox Name="StrTextbox" HorizontalAlignment="Left" Margin="55,150,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" Height="50" Background="#FFCEC5C5"/>
-        <TextBox Name="DexTextbox" HorizontalAlignment="Left" Margin="154,150,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" Height="50" Background="#FFCEC5C5"/>
-        <TextBox Name="ConTextbox" HorizontalAlignment="Left" Margin="275,150,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" Height="50" Background="#FFCEC5C5"/>
-        <TextBox Name="IntTextbox" HorizontalAlignment="Left" Margin="475,150,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" Height="50" Background="#FFCEC5C5"/>
-        <TextBox Name="WisTextbox" HorizontalAlignment="Left" Margin="601,150,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" Height="50" Background="#FFCEC5C5"/>
-        <TextBox Name="ChaTextbox" HorizontalAlignment="Left" Margin="712,150,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" Height="50" Background="#FFCEC5C5"/>
+
+        <GroupBox Name="EnemyDetailsGroup" Header="Enemy Details" Margin="10,60,10,10">
+            <Grid>
+
+                <TextBox Name="StrTextbox" HorizontalAlignment="Left" Margin="20,87,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" Height="50" Background="#FFCEC5C5"/>
+                <TextBox Name="DexTextbox" HorizontalAlignment="Left" Margin="108,87,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" Height="50" Background="#FFCEC5C5"/>
+                <TextBox Name="ConTextbox" HorizontalAlignment="Left" Margin="204,87,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" Height="50" Background="#FFCEC5C5"/>
+                <TextBox Name="IntTextbox" HorizontalAlignment="Left" Margin="428,87,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" Height="50" Background="#FFCEC5C5"/>
+                <TextBox Name="WisTextbox" HorizontalAlignment="Left" Margin="553,87,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" Height="50" Background="#FFCEC5C5"/>
+                <TextBox Name="ChaTextbox" HorizontalAlignment="Left" Margin="665,87,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" Height="50" Background="#FFCEC5C5"/>
+                <TextBox Name="HpTextBox" HorizontalAlignment="Left" Margin="576,40,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="30" Height="25" RenderTransformOrigin="2.162,0.517"/>
+                <TextBox Name="AcTextBox" HorizontalAlignment="Left" Margin="626,40,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="30" Height="25" RenderTransformOrigin="2.162,0.517"/>
+                <TextBox Name="noteTextBox" HorizontalAlignment="Center" Margin="0,275,0,0" TextWrapping="Wrap" Text="No notes" VerticalAlignment="Top" Width="620" Height="102"/>
+                <TextBox Name="hitDiceBoxAmount" HorizontalAlignment="Left" Margin="364,86,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="30" Height="25"/>
+                <TextBox Name="hitDiceBoxSize" HorizontalAlignment="Left" Margin="412,86,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="30" Height="25"/>
+                <TextBox Name="InitiativeTextBox" HorizontalAlignment="Left" Margin="294,100,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="30" Height="24" RenderTransformOrigin="2.162,0.517"/>
+
+                <TextBox x:Name="hitDiceBoxModifier" HorizontalAlignment="Left" Margin="495,86,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="30" Height="25"/>
+                <ComboBox Name="hitDiceComboBox" HorizontalAlignment="Left" Margin="446,88,0,0" VerticalAlignment="Top" Width="44">
+                    <ComboBoxItem Content="+"/>
+                    <ComboBoxItem Content="-"/>
+                </ComboBox>
+                <Label Content="initiative" HorizontalAlignment="Left" Margin="284,40,0,0" VerticalAlignment="Top" Width="50"/>
+
+            </Grid>
+
+        </GroupBox>
+
         <Label Content="STR" HorizontalAlignment="Left" Margin="42,119,0,0" VerticalAlignment="Top" Width="50"/>
         <Label Content="DEX" HorizontalAlignment="Left" Margin="129,119,0,0" VerticalAlignment="Top" Width="50"/>
-        <Label Content="CON" HorizontalAlignment="Left" Margin="250,119,0,0" VerticalAlignment="Top" Width="50"/>
+        <Label Content="CON" HorizontalAlignment="Left" Margin="221,119,0,0" VerticalAlignment="Top" Width="50"/>
         <Label Content="INT" HorizontalAlignment="Left" Margin="450,124,0,0" VerticalAlignment="Top" Width="50"/>
         <Label Content="WIS" HorizontalAlignment="Left" Margin="576,124,0,0" VerticalAlignment="Top" Width="50"/>
         <Label Content="CHA" HorizontalAlignment="Left" Margin="687,124,0,0" VerticalAlignment="Top" Width="50"/>
-        <Label Content="HP" HorizontalAlignment="Left" Margin="576,17,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="HpTextBox" HorizontalAlignment="Left" Margin="576,43,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="30" Height="25" RenderTransformOrigin="2.162,0.517"/>
-        <Label Content="AC" HorizontalAlignment="Left" Margin="626,17,0,0" VerticalAlignment="Top"/>
-        <TextBox  Name="AcTextBox" HorizontalAlignment="Left" Margin="626,43,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="30" Height="25" RenderTransformOrigin="2.162,0.517"/>
-        <TextBox Name="noteTextBox" HorizontalAlignment="Center" Margin="0,275,0,0" TextWrapping="Wrap" Text="No notes" VerticalAlignment="Top" Width="620" Height="102"/>
+        <Label Content="HP" HorizontalAlignment="Left" Margin="576,11,0,0" VerticalAlignment="Top"/>
+        <Label Content="AC" HorizontalAlignment="Left" Margin="626,9,0,0" VerticalAlignment="Top"/>
         <Label  Content="Additional Notes" HorizontalAlignment="Left" Margin="90,244,0,0" VerticalAlignment="Top"/>
         <Button Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="105,17,0,0" VerticalAlignment="Top" Height="30" Width="70" Click="CancelButton_Click"/>
         <Button Name="SaveButton" Content="Save" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top" Height="30" Width="70" Click="SaveButton_Click"/>
         <Button Name="closeButton" Content="Close" HorizontalAlignment="Left" Margin="712,11,0,0" VerticalAlignment="Top" Height="39" Width="65" Click="closeButton_Click"/>
         <Label Content="Hit dice?" HorizontalAlignment="Center" Margin="0,60,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="hitDiceBoxAmount" HorizontalAlignment="Left" Margin="364,86,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="30" Height="25"/>
-        <TextBox Name="hitDiceBoxSize" HorizontalAlignment="Left" Margin="412,86,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="30" Height="25"/>
         <Label Content="D" HorizontalAlignment="Left" Margin="394,85,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="hitDiceBoxModifier" HorizontalAlignment="Left" Margin="495,86,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="30" Height="25"/>
-        <ComboBox Name="hitDiceComboBox" HorizontalAlignment="Left" Margin="446,88,0,0" VerticalAlignment="Top" Width="44">
-            <ComboBoxItem Content="+"/>
-        <ComboBoxItem Content="-"/>
-        </ComboBox>
         <Label Content="+/- ?" HorizontalAlignment="Left" Margin="454,62,0,0" VerticalAlignment="Top"/>
 
     </Grid>

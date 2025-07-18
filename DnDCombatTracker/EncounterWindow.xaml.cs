@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -31,40 +32,65 @@ namespace DnDCombatTracker
         {
             string folderPath = FileHandeler.programPath; //Environment.CurrentDirectory;
             string filePath = System.IO.Path.Combine(folderPath, $@"Encounters\{encountername}.txt");
-  
+
 
             try
             {
-                using StreamReader streamReader = new StreamReader(filePath);
-                List<string> encounterElementList = new List<string>();
-                while (!streamReader.EndOfStream)
-                {
+                string[] lines = File.ReadAllLines(filePath);
+                List<string> encounterElementList = lines.ToList();
 
-                    encounterElementList.Add(streamReader.ReadLine());
+                // Set the window title
+                this.Title = encounterElementList[0].Split(':').Last().Trim();
 
-                }
-                this.Title = encounterElementList[0].Split(':').Last();
-                int monsterNumber = 1;
-                foreach (string monster in encounterElementList) {
-                    if (!(monster == encounterElementList[0])) {
+                // Skip the title line and parse the rest without ordering yet
+                var encounterData = encounterElementList.Skip(1)
+                    .Select(line => new
+                    {
+                        Original = line,
+                        Initiative = int.Parse(Regex.Match(line, @"initiative:\s*(\d+)").Groups[1].Value),
+                        Type = Regex.Match(line, @"#\d*\s*(\w+),").Groups[1].Value // \d* because might not have number yet
+                    })
+                    .ToList();
 
-                        if (monster.Contains("#")) {
-
-                            encounterEnemyListbox.Items.Add($"{monster}");
-
-                        }
-                        else
+                // Number enemies within their groups in original order
+                var numberedEncounterData = encounterData
+                    .GroupBy(e => e.Type)
+                    .SelectMany(group =>
+                    {
+                        int number = 1;
+                        return group.Select(e =>
                         {
-                            encounterEnemyListbox.Items.Add($"#{monsterNumber} {monster}");
-                            monsterNumber++;
-                        }
+                            // Remove any existing numbering (#\d+)
+                            string withoutNumbering = Regex.Replace(e.Original, @"^#\d+\s*", "");
+                            // Add new numbering #1, #2, ...
+                            string numbered = $"#{number++} {withoutNumbering}";
+                            return new
+                            {
+                                Original = numbered,
+                                e.Initiative,
+                                e.Type
+                            };
+                        });
+                    })
+                    .ToList();
 
-                    }
-                   
+                // Now order by initiative descending
+                var ordered = numberedEncounterData
+                    .OrderByDescending(e => e.Initiative)
+                    .ToList();
+
+                encounterEnemyListbox.Items.Clear();
+
+                foreach (var enemy in ordered)
+                {
+                    encounterEnemyListbox.Items.Add(enemy.Original);
                 }
-                amountOfEnemiesTextBox.Text = (encounterElementList.Count -1).ToString();
+
+                // Update enemy count textbox
+                amountOfEnemiesTextBox.Text = encounterElementList.Count - 1 + "";
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 Console.WriteLine(ex.ToString());
             }
         }
