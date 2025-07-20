@@ -29,3 +29,4 @@ C:\Users\Melvin\OneDrive\Bureaublad\DotNetDnDCombatTracker\NewestDnDCombatTracke
 C:\Users\Melvin\OneDrive\Bureaublad\DotNetDnDCombatTracker\NewestDnDCombatTracker\DndTracker\obj\Debug\net8.0-windows\FightScreenWindow.baml
 C:\Users\Melvin\OneDrive\Bureaublad\DotNetDnDCombatTracker\NewestDnDCombatTracker\DndTracker\obj\Debug\net8.0-windows\EnemyInformationWindow.g.cs
 C:\Users\Melvin\OneDrive\Bureaublad\DotNetDnDCombatTracker\NewestDnDCombatTracker\DndTracker\obj\Debug\net8.0-windows\EnemyInformationWindow.baml
+C:\Users\Melvin\OneDrive\Bureaublad\DotNetDnDCombatTracker\NewestDnDCombatTracker\DndTracker\bin\Debug\net8.0-windows\Images\bandit.jpg

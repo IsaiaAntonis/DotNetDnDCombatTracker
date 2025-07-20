@@ -26,7 +26,6 @@ namespace DndTracker
         {
             InitializeComponent();
 
-
             double startTop = 10;
             double verticalSpacing = 70;
             int index = 0;
@@ -34,26 +33,32 @@ namespace DndTracker
 
             // need to orderhere list according to inititive and random 
 
+            var turnOrderedList = listOfEnemies
+                .OrderByDescending(e => e.Initiative)
+                .ThenBy(_ => Guid.NewGuid()) // to break ties randomly
+                .ToList();
 
+            listBox.Items.Clear();
+            foreach (Enemy enemy in turnOrderedList)
+            {
+                listBox.Items.Add(enemy);
+            }
 
-
-
-
-            foreach (Enemy goblin in turnOrderedList)
+            foreach (Enemy enemy in turnOrderedList)
                 {
-                    if (!string.IsNullOrWhiteSpace(goblin.ImagePath))
+                    if (!string.IsNullOrWhiteSpace(enemy.ImagePath))
                     {
-                        Image goblinImage = new Image
+                        Image entityImage = new Image
                         {
                             Width = 64,
                             Height = 64,
-                            Source = new BitmapImage(new Uri(goblin.ImagePath, UriKind.Relative))
+                            Source = new BitmapImage(new Uri(enemy.ImagePath, UriKind.Relative))
                         };
 
-                        Canvas.SetLeft(goblinImage, 10);
-                        Canvas.SetTop(goblinImage, startTop + index * verticalSpacing);
+                        Canvas.SetLeft(entityImage, 10);
+                        Canvas.SetTop(entityImage, startTop + index * verticalSpacing);
 
-                        paperCanvas.Children.Add(goblinImage);
+                        paperCanvas.Children.Add(entityImage);
 
 
                         index++;    
@@ -61,6 +66,7 @@ namespace DndTracker
 
                 }
         }
+
 
 
 

@@ -8,6 +8,16 @@
         Title="FightScreenWindow" Height="450" Width="776">
     <Grid Margin="0,0,643,0">
         <Canvas Name="paperCanvas" Background="LightGray" Grid.ColumnSpan="2"/>
-        <Button x:Name="button" Background="Orange" Content="Next turn" Margin="668,346,-590,42">  </Button>
+        <Button x:Name="button" Background="Orange" Content="Next turn" Margin="572,346,-590,42" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0.237"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="0.312"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <ListBox x:Name="listBox" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="314,90,-314,-90"/>
     </Grid>
 </Window>
