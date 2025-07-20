@@ -22,82 +22,21 @@ namespace DndTracker
             InitializeComponent();
         }
 
-        public Enemy  generateEnemy()
-        {
-            Random random = new Random();
-
-            Enemy goblin = new Enemy();
-            goblin.Name = "goblin";
-            goblin.CON = 10;
-            goblin.DEX = 14;
-            goblin.INT = 10;
-            goblin.CHA = 8;
-            goblin.STR = 8;
-            goblin.WIS = 8;
-
-            goblin.AC = 15;
-
-            goblin.Initiative = (goblin.DEX % 2) - 5; // this should give back 2 
-            goblin.HitDiceFlatModifier = (goblin.CON/2) - 5 ; // if constituion is 10 then it should equal 5 -5 = 0 if less gives a negative modifier and if more a positive 
-
-            goblin.HitDiceAmount = 2;
-            goblin.HitDiceSize = 6;
-
-            int generatedhp = 0;
-            for (int i = 0; i < goblin.HitDiceAmount; i++) {
-
-                generatedhp += random.Next(1, goblin.HitDiceSize + 1);
-       
-            }
-
-            goblin.HP = goblin.HitDiceFlatModifier +  generatedhp ;
-
-
-   
-            goblin.ImagePath = @"Images\goblin.jpg";
-
-     
-
-            return goblin;
-        }
-
         private void button_Click(object sender, RoutedEventArgs e)
         {
+            Button button = (Button)sender;
 
-
-            // this listbox will be deleted when we can play with the images
-            List<Enemy> listOfEnemies = new List<Enemy>();
-
-            for (int i = 0; i < Convert.ToInt64(AmountOfEnemiesTextBox.Text); i++)
+            if (button.Name == "buttonCreateMonsters")
             {
-                listOfEnemies.Add(generateEnemy());
-            }
-            foreach (Enemy enemy in listOfEnemies)
+
+                Window monsterWindow = new MonsterCreationWindow();
+                monsterWindow.Show();
+
+            }else
             {
-                listBox.Items.Add(enemy.Name);
-
+                Window encounterWindow = new EncounterSelectorWindow();
+                encounterWindow.ShowDialog();
             }
-
-            // this creates a image for each goblin in enemies
-
-            foreach (Enemy goblin in listOfEnemies)
-            {
-                 if (!string.IsNullOrWhiteSpace(goblin.ImagePath))
-                    {
-                        Image goblinImage = new Image
-                        {
-                            Width = 64,
-                            Height = 64,
-                            Source = new BitmapImage(new Uri(goblin.ImagePath, UriKind.Relative))
-                        };
-
-                        Canvas.SetLeft(goblinImage, 100);
-                        Canvas.SetTop(goblinImage, 150);
-                        paperCanvas.Children.Add(goblinImage);
-                    }
-
-            }
-
         }
     }
 }

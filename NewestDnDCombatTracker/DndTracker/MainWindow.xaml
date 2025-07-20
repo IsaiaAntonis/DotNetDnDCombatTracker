@@ -12,10 +12,8 @@
             <ColumnDefinition Width="151*"/>
             <ColumnDefinition Width="649*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="button" Grid.Column="2" Content="Button" HorizontalAlignment="Left" Margin="99,133,0,0" VerticalAlignment="Top" Click="button_Click"/>
-        <TextBox x:Name="AmountOfEnemiesTextBox"  Grid.Column="2" HorizontalAlignment="Left" Margin="325,135,0,0" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Width="20"/>
-        <ListBox x:Name="listBox" Grid.Column="2" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="154,165,344,28" />
-        <Canvas Name="paperCanvas" Background="LightGray" Grid.ColumnSpan="2"/>
+        <Button x:Name="buttonCreateEncounter" Grid.Column="2" Content="Encounter Creation" HorizontalAlignment="Left" Margin="99,133,0,0" VerticalAlignment="Top" Click="button_Click"/>
+        <Button x:Name="buttonCreateMonsters" Grid.Column="2" Content="Monster Creation" HorizontalAlignment="Left" Margin="260,133,0,0" VerticalAlignment="Top" Click="button_Click"/>
 
     </Grid>
 </Window>
