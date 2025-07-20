@@ -22,11 +22,13 @@ namespace DndTracker
         public EncounterSelectorWindow()
         {
             InitializeComponent();
+            listBox.DisplayMemberPath = "Name";
+
             listBox.MouseDoubleClick += listBoxItem_DoubleClick;
 
         }
 
-        private List<Enemy> listOfEnemies = new List<Enemy>(); // will private give issue 
+        private List<Enemy> listOfEnemies = new List<Enemy>();// will private give issue 
         private int entityIndex = 0;    
         public Enemy generateEnemy(int enemyindex) // static enemy generation method 
         {
@@ -72,7 +74,8 @@ namespace DndTracker
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            listOfEnemies.Clear();
+            listBox.Items.Clear();
+
 
 
             for (int i = 0; i < Convert.ToInt64(AmountOfEnemiesTextBox.Text); i++)
@@ -84,7 +87,8 @@ namespace DndTracker
 
             foreach (Enemy enemy in listOfEnemies)
             {
-                listBox.Items.Add(enemy.Name);
+                listBox.Items.Add(enemy);
+
             }
 
         }
@@ -105,11 +109,11 @@ namespace DndTracker
     
             MessageBox.Show($"You clicked {listBox.SelectedIndex}");
 
-            Enemy enemyInformation = listOfEnemies[listBox.SelectedIndex];
-
-            Window enemyInformationWindow = new EnemyInformationWindow(enemyInformation);
-            enemyInformationWindow.Show();
-         
+            if (listBox.SelectedItem is Enemy selectedEnemy)
+            {
+                Window enemyInformationWindow = new EnemyInformationWindow(selectedEnemy);
+                enemyInformationWindow.Show();
+            }
 
         }
 
