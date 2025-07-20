@@ -5,6 +5,9 @@
     <Compile Update="EncounterSelectorWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="EnemyInformationWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="FightScreenWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

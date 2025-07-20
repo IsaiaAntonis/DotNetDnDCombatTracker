@@ -27,3 +27,5 @@ C:\Users\Melvin\OneDrive\Bureaublad\DotNetDnDCombatTracker\NewestDnDCombatTracke
 C:\Users\Melvin\OneDrive\Bureaublad\DotNetDnDCombatTracker\NewestDnDCombatTracker\DndTracker\obj\Debug\net8.0-windows\MonsterCreationWindow.baml
 C:\Users\Melvin\OneDrive\Bureaublad\DotNetDnDCombatTracker\NewestDnDCombatTracker\DndTracker\obj\Debug\net8.0-windows\EncounterSelectorWindow.baml
 C:\Users\Melvin\OneDrive\Bureaublad\DotNetDnDCombatTracker\NewestDnDCombatTracker\DndTracker\obj\Debug\net8.0-windows\FightScreenWindow.baml
+C:\Users\Melvin\OneDrive\Bureaublad\DotNetDnDCombatTracker\NewestDnDCombatTracker\DndTracker\obj\Debug\net8.0-windows\EnemyInformationWindow.g.cs
+C:\Users\Melvin\OneDrive\Bureaublad\DotNetDnDCombatTracker\NewestDnDCombatTracker\DndTracker\obj\Debug\net8.0-windows\EnemyInformationWindow.baml

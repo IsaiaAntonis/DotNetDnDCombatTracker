@@ -22,16 +22,18 @@ namespace DndTracker
         public EncounterSelectorWindow()
         {
             InitializeComponent();
+            listBox.MouseDoubleClick += listBoxItem_DoubleClick;
+
         }
 
         private List<Enemy> listOfEnemies = new List<Enemy>(); // will private give issue 
-
-        public Enemy generateEnemy() // static enemy generation method 
+        private int entityIndex = 0;    
+        public Enemy generateEnemy(int enemyindex) // static enemy generation method 
         {
             Random random = new Random();
 
             Enemy goblin = new Enemy();
-            goblin.Name = "goblin";
+            
             goblin.CON = 10;
             goblin.DEX = 14;
             goblin.INT = 10;
@@ -41,9 +43,11 @@ namespace DndTracker
 
             goblin.AC = 15;
 
-            goblin.Initiative = (goblin.DEX % 2) - 5; // this should give back 2 
+            goblin.Initiative = (goblin.DEX/2) - 5 + random.Next(1,21); // this should give back 2 + random
             goblin.HitDiceFlatModifier = (goblin.CON / 2) - 5; // if constituion is 10 then it should equal 5 -5 = 0 if less gives a negative modifier and if more a positive 
-
+           
+            goblin.Name = $"#{enemyindex + 1} Goblin , Initiative: {goblin.Initiative}";
+           
             goblin.HitDiceAmount = 2;
             goblin.HitDiceSize = 6;
 
@@ -68,27 +72,46 @@ namespace DndTracker
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-
+            listOfEnemies.Clear();
 
 
             for (int i = 0; i < Convert.ToInt64(AmountOfEnemiesTextBox.Text); i++)
             {
-                listOfEnemies.Add(generateEnemy());
+                listOfEnemies.Add(generateEnemy(entityIndex));
+                entityIndex++;
             }
+
+
             foreach (Enemy enemy in listOfEnemies)
             {
                 listBox.Items.Add(enemy.Name);
-
             }
-
-
 
         }
 
-        private void buttonStart_Click(object sender, RoutedEventArgs e)
+        private void buttonStartTurnBased_Click(object sender, RoutedEventArgs e)
         {
             Window fightWindow = new FightScreenWindow(listOfEnemies);
             fightWindow.Show();
         }
+
+        private void buttonStartInteractive_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void listBoxItem_DoubleClick(object sender, RoutedEventArgs e)
+        {
+            ListBox listBox = (ListBox)sender;
+    
+            MessageBox.Show($"You clicked {listBox.SelectedIndex}");
+
+            Enemy enemyInformation = listOfEnemies[listBox.SelectedIndex];
+
+            Window enemyInformationWindow = new EnemyInformationWindow(enemyInformation);
+            enemyInformationWindow.Show();
+         
+
+        }
+
     }
 }

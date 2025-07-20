@@ -19,11 +19,27 @@ namespace DndTracker
     /// </summary>
     public partial class FightScreenWindow : Window
     {
+
+
+        private List<Enemy> turnOrderedList = new List<Enemy>();
         public FightScreenWindow(List<Enemy> listOfEnemies)
         {
             InitializeComponent();
 
-            foreach (Enemy goblin in listOfEnemies)
+
+            double startTop = 10;
+            double verticalSpacing = 70;
+            int index = 0;
+
+
+            // need to orderhere list according to inititive and random 
+
+
+
+
+
+
+            foreach (Enemy goblin in turnOrderedList)
                 {
                     if (!string.IsNullOrWhiteSpace(goblin.ImagePath))
                     {
@@ -34,9 +50,13 @@ namespace DndTracker
                             Source = new BitmapImage(new Uri(goblin.ImagePath, UriKind.Relative))
                         };
 
-                        Canvas.SetLeft(goblinImage, 100);
-                        Canvas.SetTop(goblinImage, 150);
+                        Canvas.SetLeft(goblinImage, 10);
+                        Canvas.SetTop(goblinImage, startTop + index * verticalSpacing);
+
                         paperCanvas.Children.Add(goblinImage);
+
+
+                        index++;    
                     }
 
                 }
