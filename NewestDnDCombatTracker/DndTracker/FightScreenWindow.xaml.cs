@@ -114,6 +114,26 @@ namespace DndTracker
             int damage;
             // if custom damage is empty then we just use the default calculation which is the weapon and str or dex depending on finesse
 
+            // DOES TARGET GET HIT OR NOT LOGIC AC CALCULATIONS
+
+
+            // === AC CHECK LOGIC ===
+            int attackRoll = _random.Next(1, 21); // 1d20
+            int attackBonus = _currentTurnEntity.STR / 2 - 5;  //+ _currentTurnEntity.ProficiencyBonus; // STR mod + prof bonus 
+            // WE DONT HAVE PROFICIENCY BONUS JUST YET AND ALSO NO FINESSE 
+
+            int totalAttack = attackRoll + attackBonus;
+
+            if (totalAttack < attackTarget.AC)
+            {
+                labelDamage.Content = $"{_currentTurnEntity.Name} attacks {attackTarget.Name} but misses! (Rolled {totalAttack} vs AC {attackTarget.AC})";
+                return; // Skip damage if attack misses
+            }
+
+
+            // TARGET DAMAGE LOGIC 
+
+
             if (!string.IsNullOrWhiteSpace(textBoxCustomAttack.Text) &&
                 int.TryParse(textBoxCustomAttack.Text, out int customDamage))
             {
@@ -140,6 +160,11 @@ namespace DndTracker
             
             attackTarget.HP = attackTarget.HP - damage ; // 1 needs to replaced by damage calculation and randomness
             
+
+
+
+
+            // TARGET DEAD LOGIC 
             if (attackTarget.HP <= 0)
             {
                 attackTarget.IsDead = true;
