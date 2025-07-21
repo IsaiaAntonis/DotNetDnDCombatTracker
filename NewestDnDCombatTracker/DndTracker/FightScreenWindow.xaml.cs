@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,10 +22,11 @@ namespace DndTracker
     public partial class FightScreenWindow : Window
     {
 
-        private Enemy _currentEnemy = new Enemy();
+        private Enemy _currentTurnEntity = new Enemy();
         private List<Enemy> turnOrderedList;
         private int currentEnemyIndex = 0;
         private Ellipse _lastEllipse = new Ellipse();
+        private Random _random = new Random();
         public FightScreenWindow(List<Enemy> listOfEnemies)
         {
             InitializeComponent();
@@ -41,12 +43,16 @@ namespace DndTracker
                 .ThenBy(_ => Guid.NewGuid()) // to break ties randomly
                 .ToList();
 
-       
-
+   
             listBox.Items.Clear();
+
             foreach (Enemy enemy in turnOrderedList)
             {
-                listBox.Items.Add(enemy);
+
+                ListBoxItem item = new ListBoxItem();
+                item.Content = enemy.Name;
+                item.Tag = enemy.Name;                      // for attack method
+                listBox.Items.Add(item);
             }
 
 
@@ -74,10 +80,10 @@ namespace DndTracker
             }
 
             enemyCircleIndicator(currentEnemyIndex);
-            _currentEnemy = turnOrderedList.FirstOrDefault();
-            DataContext = _currentEnemy;
 
 
+            _currentTurnEntity = turnOrderedList.FirstOrDefault();
+            DataContext = _currentTurnEntity; // DataContext here fills the stats in xaml 
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -85,14 +91,18 @@ namespace DndTracker
             if (turnOrderedList == null || !turnOrderedList.Any())
                 return;
 
-            currentEnemyIndex++;
+            do
+            {
+                currentEnemyIndex++;
 
-            // Loop back to the beginning if we reach the end
-            if (currentEnemyIndex >= turnOrderedList.Count)
-                currentEnemyIndex = 0;
+                if (currentEnemyIndex >= turnOrderedList.Count)
+                    currentEnemyIndex = 0;
 
-            _currentEnemy = turnOrderedList[currentEnemyIndex];
-            DataContext = _currentEnemy;
+                // Keep looping until we find an enemy that's not dead
+            } while (turnOrderedList[currentEnemyIndex].IsDead);
+
+            _currentTurnEntity = turnOrderedList[currentEnemyIndex];
+            DataContext = _currentTurnEntity;
 
             enemyCircleIndicator(currentEnemyIndex);
         }
@@ -100,8 +110,51 @@ namespace DndTracker
         private void buttonAttack_Click(object sender, RoutedEventArgs e)
         {
             int selectedTarget = listBox.SelectedIndex;
+            Enemy attackTarget = turnOrderedList[selectedTarget];
+            int damage;
+            // if custom damage is empty then we just use the default calculation which is the weapon and str or dex depending on finesse
 
-            turnOrderedList[selectedTarget].HP = 1; // 1 needs to replaced by damage calculation and randomness
+            if (!string.IsNullOrWhiteSpace(textBoxCustomAttack.Text) &&
+                int.TryParse(textBoxCustomAttack.Text, out int customDamage))
+            {
+                // Use the custom input
+                damage = customDamage;
+            }
+            else
+            {
+                string equippedWeapon = _currentTurnEntity.EquippedWeapons;
+                int strengthMod = _currentTurnEntity.STR;
+
+                // THIS LOGIC IS NOT FINISHED 
+                if (equippedWeapon.Equals("longsword"))
+                {
+                    damage = _random.Next(1, 8) + _random.Next(1, 8) + strengthMod;
+                }else
+                {
+
+                    damage = _random.Next(1, 4) + _random.Next(1, 4)  + strengthMod;
+                }
+            }
+
+            labelDamage.Content = attackTarget.Name + " took " + damage +  " Damage!";
+            
+            attackTarget.HP = attackTarget.HP - damage ; // 1 needs to replaced by damage calculation and randomness
+            
+            if (attackTarget.HP <= 0)
+            {
+                attackTarget.IsDead = true;
+
+                foreach (ListBoxItem item in listBox.Items)                 // this is used to compare which target is eliminated and grey them out 
+                {
+                    if (item.Content?.ToString() == attackTarget.Name) // this string comparison is fragile becuase duplicate names will break it good thing we generate each of our targets with numbering #
+                    {
+                        item.IsEnabled = false;
+                        item.Opacity = 0.5; // Optional: gray it out
+                        break;
+                    }
+                }
+
+            }
 
 
         }

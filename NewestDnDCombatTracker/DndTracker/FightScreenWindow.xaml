@@ -11,8 +11,11 @@
 
     <Grid Margin="0,0,0,0">
         <Canvas Name="paperCanvas" Background="LightGray" Grid.ColumnSpan="2">
-            <Button x:Name="buttonAttack" Content="Attack" Canvas.Left="669" Canvas.Top="77" Click="buttonAttack_Click"/>
-            <Button x:Name="buttonHeal" Content="Heal" Canvas.Left="668" Canvas.Top="109" Click="buttonHeal_Click" HorizontalAlignment="Left" VerticalAlignment="Center" Width="38"/>
+            <Button x:Name="buttonAttack" Content="Attack" Canvas.Left="699" Canvas.Top="63" Click="buttonAttack_Click" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Button x:Name="buttonHeal" Content="Heal" Canvas.Left="699" Canvas.Top="127" Click="buttonHeal_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="38" RenderTransformOrigin="0.492,1.162"/>
+            <TextBox x:Name="textBoxCustomAttack" Canvas.Left="689" TextWrapping="Wrap" Text="" Canvas.Top="88" Width="58" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox x:Name="textBoxCustomHeal" Canvas.Left="689" TextWrapping="Wrap" Text="" Canvas.Top="152" Width="58" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label x:Name="labelDamage" Content="" Canvas.Left="464" Canvas.Top="304" HorizontalAlignment="Left" VerticalAlignment="Center" Width="283"/>
         </Canvas>
 
         <Grid Margin="100,0,290,10">
@@ -101,21 +104,8 @@
             </Grid>
         </Grid>
 
-        <Button x:Name="button" Background="Orange" Content="Next turn" Margin="560,350,57,37" RenderTransformOrigin="0.5,0.5" Click="button_Click">
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform AngleY="0.237"/>
-                    <RotateTransform/>
-                    <TranslateTransform Y="0.312"/>
-                </TransformGroup>
-            </Button.RenderTransform>
-        </Button>
-        <ListBox x:Name="listBox" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="491,59,164,155"/>
-
-
-
-
+        <Button x:Name="button" Background="Orange" Content="Next turn" Margin="560,350,57,37"  Click="button_Click"></Button>
+        <ListBox x:Name="listBox" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="461,59,124,155" ></ListBox>
     </Grid>
 
 

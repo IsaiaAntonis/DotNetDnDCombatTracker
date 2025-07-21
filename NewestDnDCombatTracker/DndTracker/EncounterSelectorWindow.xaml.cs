@@ -56,6 +56,7 @@ namespace DndTracker
 
                 goblin.HitDiceAmount = 2;
                 goblin.HitDiceSize = 6;
+                goblin.EquippedWeapons = "daggers";
 
                 int generatedhp = 0;
                 for (int i = 0; i < goblin.HitDiceAmount; i++)
@@ -91,6 +92,7 @@ namespace DndTracker
 
                 bandit.HitDiceAmount = 2;
                 bandit.HitDiceSize = 8;
+                bandit.EquippedWeapons = "longsword";
 
                 int generatedhp = 0;
                 for (int i = 0; i < bandit.HitDiceAmount; i++)
