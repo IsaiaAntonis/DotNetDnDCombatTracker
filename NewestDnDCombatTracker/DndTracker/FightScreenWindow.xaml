@@ -6,9 +6,102 @@
         xmlns:local="clr-namespace:DndTracker"
         mc:Ignorable="d"
         Title="FightScreenWindow" Height="450" Width="776">
-    <Grid Margin="0,0,643,0">
-        <Canvas Name="paperCanvas" Background="LightGray" Grid.ColumnSpan="2"/>
-        <Button x:Name="button" Background="Orange" Content="Next turn" Margin="572,346,-590,42" RenderTransformOrigin="0.5,0.5">
+
+
+
+    <Grid Margin="0,0,0,0">
+        <Canvas Name="paperCanvas" Background="LightGray" Grid.ColumnSpan="2">
+            <Button x:Name="buttonAttack" Content="Attack" Canvas.Left="669" Canvas.Top="77" Click="buttonAttack_Click"/>
+            <Button x:Name="buttonHeal" Content="Heal" Canvas.Left="668" Canvas.Top="109" Click="buttonHeal_Click" HorizontalAlignment="Left" VerticalAlignment="Center" Width="38"/>
+        </Canvas>
+
+        <Grid Margin="100,0,290,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Enemy Name -->
+            <TextBlock Text="{Binding Name}" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+
+
+            <!-- Basic Stats -->
+            <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,0,0,10">
+                <Image Source="{Binding ImagePath}" Width="100" Height="100" Margin="0,0,10,0"/>
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock>
+            <Run Text="AC: "/>
+            <Run Text="{Binding AC}"/>
+                    </TextBlock>
+                    <TextBlock>
+            <Run Text="HP: "/>
+            <Run Text="{Binding HP}"/>
+                    </TextBlock>
+                    <TextBlock>
+            <Run Text="Initiative: "/>
+            <Run Text="{Binding Initiative}"/>
+                    </TextBlock>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Ability Scores + Abilities -->
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Ability Scores" FontSize="16" FontWeight="Bold" Margin="0,0,0,10" Grid.Row="0"/>
+                <!-- Ability Scores -->
+                <UniformGrid Grid.Row="1" Columns="2" Rows="3" Margin="0,0,0,10">
+                    <TextBlock>
+        <Run Text="STR: "/>
+        <Run Text="{Binding STR}"/>
+                    </TextBlock>
+                    <TextBlock>
+        <Run Text="DEX: "/>
+        <Run Text="{Binding DEX}"/>
+                    </TextBlock>
+                    <TextBlock>
+        <Run Text="CON: "/>
+        <Run Text="{Binding CON}"/>
+                    </TextBlock>
+                    <TextBlock>
+        <Run Text="INT: "/>
+        <Run Text="{Binding INT}"/>
+                    </TextBlock>
+                    <TextBlock>
+        <Run Text="WIS: "/>
+        <Run Text="{Binding WIS}"/>
+                    </TextBlock>
+                    <TextBlock>
+        <Run Text="CHA: "/>
+        <Run Text="{Binding CHA}"/>
+                    </TextBlock>
+                </UniformGrid>
+                <!-- Notes -->
+                <StackPanel Grid.Row="2">
+                    <TextBlock Text="Notes:" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding Notes}" TextWrapping="Wrap"/>
+                </StackPanel>
+
+                <!-- Optional: Hit Dice -->
+                <StackPanel Grid.Row="2" Margin="0,10,0,0">
+                    <TextBlock Text="Hit Dice:" FontWeight="Bold"/>
+                    <TextBlock>
+        <Run Text="{Binding HitDiceAmount}"/>
+        <Run Text="d"/>
+        <Run Text="{Binding HitDiceSize}"/>
+        <Run Text="+"/>
+        <Run Text="{Binding HitDiceFlatModifier}"/>
+                    </TextBlock>
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+        <Button x:Name="button" Background="Orange" Content="Next turn" Margin="560,350,57,37" RenderTransformOrigin="0.5,0.5" Click="button_Click">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -18,6 +111,13 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <ListBox x:Name="listBox" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="314,90,-314,-90"/>
+        <ListBox x:Name="listBox" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="491,59,164,155"/>
+
+
+
+
     </Grid>
+
+
+
 </Window>

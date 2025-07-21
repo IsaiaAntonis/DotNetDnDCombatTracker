@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,8 +21,10 @@ namespace DndTracker
     public partial class FightScreenWindow : Window
     {
 
-
-        private List<Enemy> turnOrderedList = new List<Enemy>();
+        private Enemy _currentEnemy = new Enemy();
+        private List<Enemy> turnOrderedList;
+        private int currentEnemyIndex = 0;
+        private Ellipse _lastEllipse = new Ellipse();
         public FightScreenWindow(List<Enemy> listOfEnemies)
         {
             InitializeComponent();
@@ -29,20 +32,24 @@ namespace DndTracker
             double startTop = 10;
             double verticalSpacing = 70;
             int index = 0;
-
+           
 
             // need to orderhere list according to inititive and random 
 
-            var turnOrderedList = listOfEnemies
+            turnOrderedList = listOfEnemies
                 .OrderByDescending(e => e.Initiative)
                 .ThenBy(_ => Guid.NewGuid()) // to break ties randomly
                 .ToList();
+
+       
 
             listBox.Items.Clear();
             foreach (Enemy enemy in turnOrderedList)
             {
                 listBox.Items.Add(enemy);
             }
+
+
 
             foreach (Enemy enemy in turnOrderedList)
                 {
@@ -64,11 +71,60 @@ namespace DndTracker
                         index++;    
                     }
 
-                }
+            }
+
+            enemyCircleIndicator(currentEnemyIndex);
+            _currentEnemy = turnOrderedList.FirstOrDefault();
+            DataContext = _currentEnemy;
+
+
         }
 
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            if (turnOrderedList == null || !turnOrderedList.Any())
+                return;
+
+            currentEnemyIndex++;
+
+            // Loop back to the beginning if we reach the end
+            if (currentEnemyIndex >= turnOrderedList.Count)
+                currentEnemyIndex = 0;
+
+            _currentEnemy = turnOrderedList[currentEnemyIndex];
+            DataContext = _currentEnemy;
+
+            enemyCircleIndicator(currentEnemyIndex);
+        }
+
+        private void buttonAttack_Click(object sender, RoutedEventArgs e)
+        {
+            int selectedTarget = listBox.SelectedIndex;
+
+            turnOrderedList[selectedTarget].HP = 1; // 1 needs to replaced by damage calculation and randomness
 
 
+        }
+
+        private void buttonHeal_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void enemyCircleIndicator(int turnCounter)
+        {
+            paperCanvas.Children.Remove(_lastEllipse);
+
+            Ellipse ellipse = new Ellipse();
+            ellipse.Stroke = new SolidColorBrush(Colors.Red);
+
+            ellipse.Width = 80;
+            ellipse.Height = 80;
+            ellipse.Margin = new Thickness(0, 0 + turnCounter * 70, 0,0);
+
+            _lastEllipse = ellipse;
+            paperCanvas.Children.Add(ellipse);
+        }
 
     }
 }
