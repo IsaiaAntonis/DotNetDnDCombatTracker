@@ -15,6 +15,8 @@ public abstract class CharacterBase
     public int CHA { get; set; }
 
     public bool IsDead { get; set; }
+    public bool Finesse { get; set; }
+
     public string EquippedWeapons { get; set; } 
     public string Notes { get; set; }
 
@@ -26,7 +28,7 @@ public abstract class CharacterBase
 
     protected CharacterBase(string name, int hp, int ac, int initiative,
                             int str, int dex, int con, int intel,
-                            int wis, int cha, string notes , int hitDiceAmount, int hitDiceSize, int hitDiceModifier , string imagePath , bool isDead , string equippedWeapons)
+                            int wis, int cha, string notes , int hitDiceAmount, int hitDiceSize, int hitDiceModifier , string imagePath , bool isDead , string equippedWeapons, bool finesse)
     {
         Name = name;
         HP = hp;
@@ -49,6 +51,7 @@ public abstract class CharacterBase
         ImagePath = imagePath;
         IsDead = isDead;
         EquippedWeapons = equippedWeapons;
+        Finesse = finesse;
     }
     public CharacterBase() { }
 

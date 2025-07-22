@@ -38,6 +38,16 @@ namespace DndTracker
                 string hitDiceMod = textBoxHitDiceFlatModifier.Text;
                 string notes = textBoxNotes.Text.Replace("\n", " ").Replace("\r", "");
                 string imagePath = textBoxImagePath.Text;
+                string equippedWeapon = comboBoxWeapon.Text;
+                string finesse  = "false";
+                if (comboBoxFinesse.SelectedIndex == 0) {
+
+                     finesse = "true";
+                }
+                else
+                {
+                     finesse = "false";
+                }
 
                 // Determine character type
                 if (comboBox.SelectedValue.ToString() == "Player")
@@ -54,7 +64,7 @@ namespace DndTracker
                 string line = string.Join(separator, new string[]
                 {
                     name, ac, hp, initiative, str, dex, con, intel, wis, cha,
-                    hitDiceAmount, hitDiceSize, hitDiceMod, notes, imagePath
+                    hitDiceAmount, hitDiceSize, hitDiceMod, notes, imagePath , equippedWeapon, finesse
                 });
 
                 // Path to AppData\DndTracker\name.txt

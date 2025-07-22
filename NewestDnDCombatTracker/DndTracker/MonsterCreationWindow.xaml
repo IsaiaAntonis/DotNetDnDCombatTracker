@@ -80,6 +80,60 @@
                 <ComboBoxItem Content="Enemy"/>
             </ComboBox>
 
+            <ComboBox x:Name="comboBoxWeapon" Width="200" Height="30" Margin="0,5,0,20">
+                <ComboBoxItem Content="None"/>
+
+                <!-- Simple Melee Weapons -->
+                <ComboBoxItem Content="Club"/>
+                <ComboBoxItem Content="Dagger"/>
+                <ComboBoxItem Content="Greatclub"/>
+                <ComboBoxItem Content="Handaxe"/>
+                <ComboBoxItem Content="Javelin"/>
+                <ComboBoxItem Content="Light Hammer"/>
+                <ComboBoxItem Content="Mace"/>
+                <ComboBoxItem Content="Quarterstaff"/>
+                <ComboBoxItem Content="Sickle"/>
+                <ComboBoxItem Content="Spear"/>
+
+                <!-- Simple Ranged Weapons -->
+                <ComboBoxItem Content="Light Crossbow"/>
+                <ComboBoxItem Content="Dart"/>
+                <ComboBoxItem Content="Shortbow"/>
+                <ComboBoxItem Content="Sling"/>
+
+                <!-- Martial Melee Weapons -->
+                <ComboBoxItem Content="Battleaxe"/>
+                <ComboBoxItem Content="Flail"/>
+                <ComboBoxItem Content="Glaive"/>
+                <ComboBoxItem Content="Greataxe"/>
+                <ComboBoxItem Content="Greatsword"/>
+                <ComboBoxItem Content="Halberd"/>
+                <ComboBoxItem Content="Lance"/>
+                <ComboBoxItem Content="Longsword"/>
+                <ComboBoxItem Content="Maul"/>
+                <ComboBoxItem Content="Morningstar"/>
+                <ComboBoxItem Content="Pike"/>
+                <ComboBoxItem Content="Rapier"/>
+                <ComboBoxItem Content="Scimitar"/>
+                <ComboBoxItem Content="Shortsword"/>
+                <ComboBoxItem Content="Trident"/>
+                <ComboBoxItem Content="War Pick"/>
+                <ComboBoxItem Content="Warhammer"/>
+                <ComboBoxItem Content="Whip"/>
+
+                <!-- Martial Ranged Weapons -->
+                <ComboBoxItem Content="Blowgun"/>
+                <ComboBoxItem Content="Hand Crossbow"/>
+                <ComboBoxItem Content="Heavy Crossbow"/>
+                <ComboBoxItem Content="Longbow"/>
+                <ComboBoxItem Content="Net"/>
+            </ComboBox>
+
+
+            <ComboBox x:Name="comboBoxFinesse" Text="Finesse or not" Width="120" Height="30" Margin="0,5,0,20">
+                <ComboBoxItem Content="Yes"/>
+                <ComboBoxItem Content="No"/>
+            </ComboBox>
             <!-- Save Button -->
             <Button Content="Save Monster" Width="150" Height="40" Click="Button_Click" HorizontalAlignment="Center"/>
         </StackPanel>

@@ -71,28 +71,73 @@ namespace DndTracker
         {
             Random random = new Random();
 
-            // this should be dragon now
+            // this should be the select entity
             string selectedType = combox.SelectionBoxItem.ToString();
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+
+            string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string dir = System.IO.Path.Combine(appDataPath, "DndTracker");
+     
+            string filePath = System.IO.Path.Combine(dir, $"{selectedType}.txt");
+
+
+            string[] data = File.ReadAllText(filePath).Split('|');
+
+            Enemy entity = new Enemy();
+
+            // Fill properties from file
+            entity.Name = data[0];
+            entity.AC = int.Parse(data[1]);
+            entity.HP = int.Parse(data[2]);
+            entity.Initiative = int.Parse(data[3]) + random.Next(1,21);
+
+            entity.STR = int.Parse(data[4]);
+            entity.DEX = int.Parse(data[5]);
+            entity.CON = int.Parse(data[6]);
+            entity.INT = int.Parse(data[7]);
+            entity.WIS = int.Parse(data[8]);
+            entity.CHA = int.Parse(data[9]);
+
+            entity.HitDiceAmount = int.Parse(data[10]);
+            entity.HitDiceSize = int.Parse(data[11]);
+            entity.HitDiceFlatModifier = int.Parse(data[12]);
+
+            entity.Notes = data[13];
+
+
+            //dit is om het meer robust te maken als je bvb een pad copy dan heeft die quotes en @ terwijl als je manual schijft moet het ook werken
+            string cleanedPath = data[14]
+                .Replace("\"", "")           // remove quotes
+                .Replace("@", "")            // remove @
+                .Trim();                     // remove whitespace and newlines
+            entity.ImagePath =cleanedPath;
+
+ 
+            int hpFromDice = 0;
+            for (int i = 0; i < entity.HitDiceAmount; i++)
+            {
+                hpFromDice += random.Next(1, entity.HitDiceSize + 1);
+            }
+            entity.HP = hpFromDice + entity.HitDiceFlatModifier;
+
+            entity.Name = $"#{enemyindex + 1} {data[0]} , Initiative: {entity.Initiative}";
+
+            entity.EquippedWeapons = data[15];
+
+            if (data[16].Equals("true")){
+                entity.Finesse = true;
+            }
+            else
+            {
+                entity.Finesse = false;
+
+            };
+
+
+
+            return entity;
+
+
+
             /*
             if (selectedType.Equals("Goblin")) // the static data inside here will eventually be replaced with a streamreader out of a txt 
             {
@@ -168,7 +213,7 @@ namespace DndTracker
                 return null;
             }
             */
-            
+
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
