@@ -196,7 +196,7 @@ namespace DndTracker {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/DndTracker;component/monstercreationwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/DndTracker;V1.0.0.0;component/monstercreationwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\MonsterCreationWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
