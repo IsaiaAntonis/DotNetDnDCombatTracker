@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
+using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -11,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace DndTracker
 {
@@ -23,19 +27,73 @@ namespace DndTracker
         {
             InitializeComponent();
             listBox.DisplayMemberPath = "Name";
-
             listBox.MouseDoubleClick += listBoxItem_DoubleClick;
+
+
+            int totalEntities = 0;
+                // Path to AppData\DndTracker\name.txt
+            string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string dir = System.IO.Path.Combine(appDataPath, "DndTracker");
+
+            try
+            {
+
+
+                if (!Directory.Exists(dir))
+                {
+                    MessageBox.Show("No entities found.");
+                    return;
+                }
+
+                totalEntities = Directory.GetFiles(dir, "*.txt").Length;
+
+            }
+            catch
+            {
+                MessageBox.Show("You didn't create any entities");
+            }
+
+            foreach (string text in Directory.GetFiles(dir, "*.txt"))
+            {
+                ComboBoxItem comboBoxItem = new ComboBoxItem();
+
+               
+                comboBoxItem.Content = text.Split('\\').Last().Split(".").First();
+                combox.Items.Add(comboBoxItem);
+            }
+ 
 
         }
 
         private List<Enemy> listOfEnemies = new List<Enemy>();// will private give issue 
         private int entityIndex = 0;    
-        public Enemy generateEnemy(int enemyindex) // static enemy generation method 
+        public Enemy generateEnemy(int enemyindex)  
         {
             Random random = new Random();
 
+            // this should be dragon now
             string selectedType = combox.SelectionBoxItem.ToString();
-
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            /*
             if (selectedType.Equals("Goblin")) // the static data inside here will eventually be replaced with a streamreader out of a txt 
             {
                 Enemy goblin = new Enemy();
@@ -109,7 +167,7 @@ namespace DndTracker
             {
                 return null;
             }
-
+            */
             
         }
 

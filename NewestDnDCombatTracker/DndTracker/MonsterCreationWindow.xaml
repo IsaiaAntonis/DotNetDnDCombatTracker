@@ -1,12 +1,87 @@
 ﻿<Window x:Class="DndTracker.MonsterCreationWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DndTracker"
-        mc:Ignorable="d"
-        Title="MonsterCreationWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Create New Monster" Height="750" Width="500">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="20" VerticalAlignment="Top">
+
+            <!-- Name -->
+            <TextBlock Text="Monster Name:" FontWeight="Bold" />
+            <TextBox x:Name="textBoxName" Width="300" Margin="0,5,0,10"/>
+
+            <!-- Image Path -->
+            <TextBlock Text="Image Path:" FontWeight="Bold" />
+            <TextBox x:Name="textBoxImagePath" Width="300" Margin="0,5,0,10"/>
+
+            <!-- Basic Stats -->
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10" HorizontalAlignment="Left">
+                <StackPanel Margin="0,0,20,0">
+                    <TextBlock Text="AC:" FontWeight="Bold"/>
+                    <TextBox x:Name="textBoxAC" Width="60"/>
+                </StackPanel>
+                <StackPanel Margin="0,0,20,0">
+                    <TextBlock Text="HP:" FontWeight="Bold"/>
+                    <TextBox x:Name="textBoxHP" Width="60"/>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="Initiative:" FontWeight="Bold"/>
+                    <TextBox x:Name="textBoxInitiative" Width="60"/>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Ability Scores -->
+            <GroupBox Header="Ability Scores" Margin="0,0,0,10">
+                <UniformGrid Columns="2" Rows="3" Margin="10">
+                    <StackPanel>
+                        <TextBlock Text="STR:"/>
+                        <TextBox x:Name="textBoxSTR" Width="60"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="DEX:"/>
+                        <TextBox x:Name="textBoxDEX" Width="60"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="CON:"/>
+                        <TextBox x:Name="textBoxCON" Width="60"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="INT:"/>
+                        <TextBox x:Name="textBoxINT" Width="60"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="WIS:"/>
+                        <TextBox x:Name="textBoxWIS" Width="60"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="CHA:"/>
+                        <TextBox x:Name="textBoxCHA" Width="60"/>
+                    </StackPanel>
+                </UniformGrid>
+            </GroupBox>
+
+            <!-- Hit Dice -->
+            <TextBlock Text="Hit Dice:" FontWeight="Bold"/>
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,10">
+                <TextBox x:Name="textBoxHitDiceAmount" Width="40" Margin="0,0,5,0"/>
+                <TextBlock Text="d" VerticalAlignment="Center"/>
+                <TextBox x:Name="textBoxHitDiceSize" Width="40" Margin="5,0,5,0"/>
+                <TextBlock Text="+" VerticalAlignment="Center"/>
+                <TextBox x:Name="textBoxHitDiceFlatModifier" Width="40" Margin="5,0,0,0"/>
+            </StackPanel>
+
+            <!-- Notes -->
+            <TextBlock Text="Notes:" FontWeight="Bold"/>
+            <TextBox x:Name="textBoxNotes" TextWrapping="Wrap" AcceptsReturn="True" Height="100" Margin="0,5,0,10"/>
+
+            <!-- Combo Box for Player/Enemy -->
+            <TextBlock Text="Entity Type:" FontWeight="Bold"/>
+            <ComboBox x:Name="comboBox" Width="120" Height="30" Margin="0,5,0,20">
+                <ComboBoxItem Content="Player"/>
+                <ComboBoxItem Content="Enemy"/>
+            </ComboBox>
+
+            <!-- Save Button -->
+            <Button Content="Save Monster" Width="150" Height="40" Click="Button_Click" HorizontalAlignment="Center"/>
+        </StackPanel>
+    </ScrollViewer>
 </Window>

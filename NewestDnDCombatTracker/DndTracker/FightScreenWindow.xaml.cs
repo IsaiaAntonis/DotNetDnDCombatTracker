@@ -105,10 +105,15 @@ namespace DndTracker
             DataContext = _currentTurnEntity;
 
             enemyCircleIndicator(currentEnemyIndex);
+
+            buttonAttack.IsEnabled = true;
         }
 
         private void buttonAttack_Click(object sender, RoutedEventArgs e)
         {
+
+            buttonAttack.IsEnabled = false;
+
             int selectedTarget = listBox.SelectedIndex;
             Enemy attackTarget = turnOrderedList[selectedTarget];
             int damage;
