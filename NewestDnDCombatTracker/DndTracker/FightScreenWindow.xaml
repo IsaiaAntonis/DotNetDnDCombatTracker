@@ -15,10 +15,12 @@
             <Button x:Name="buttonHeal" Content="Heal" Canvas.Left="699" Canvas.Top="127" Click="buttonHeal_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="38" RenderTransformOrigin="0.492,1.162"/>
             <TextBox x:Name="textBoxCustomAttack" Canvas.Left="689" TextWrapping="Wrap" Text="" Canvas.Top="88" Width="58" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <TextBox x:Name="textBoxCustomHeal" Canvas.Left="689" TextWrapping="Wrap" Text="" Canvas.Top="152" Width="58" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Label x:Name="labelDamage" Content=""
-       Canvas.Left="464" Canvas.Top="304"
-       HorizontalAlignment="Left"
-       VerticalAlignment="Center"/>
+
+
+            <TextBlock x:Name="labelDamage" Text="" Width="300" TextWrapping="Wrap" Padding="5" Canvas.Left="418" Canvas.Top="290" HorizontalAlignment="Center" Height="43" VerticalAlignment="Top"></TextBlock>
+
+
+
         </Canvas>
 
         <Grid Margin="100,0,290,10">

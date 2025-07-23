@@ -101,7 +101,7 @@ namespace DndTracker {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/DndTracker;V1.0.0.0;component/encounterselectorwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/DndTracker;component/encounterselectorwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\EncounterSelectorWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
