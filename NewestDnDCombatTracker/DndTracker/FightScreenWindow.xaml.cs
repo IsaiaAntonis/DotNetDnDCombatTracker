@@ -182,7 +182,8 @@ namespace DndTracker
             int attackRoll = _random.Next(1, 21); // 1d20
 
             // Check if weapon is finesse-capable
-            bool isFinesseWeapon = _weaponDamageMap.TryGetValue(equippedWeapon, out var weaponStats) && weaponStats.IsFinesse;
+          
+            bool isFinesseWeapon = _weaponDamageMap.TryGetValue(equippedWeapon, out var finesseCheckStats) && finesseCheckStats.IsFinesse;
 
             // Apply DEX mod if finesse weapon + finesse used, otherwise STR mod
             int attackBonus = (isFinesseWeapon && _currentTurnEntity.Finesse) ? dexMod : strMod;

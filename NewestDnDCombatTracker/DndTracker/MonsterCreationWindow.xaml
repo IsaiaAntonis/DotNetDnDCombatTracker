@@ -11,7 +11,7 @@
 
             <!-- Image Path -->
             <TextBlock Text="Image Path:" FontWeight="Bold" />
-            <TextBox x:Name="textBoxImagePath" Width="300" Margin="0,5,0,10"/>
+            <TextBox x:Name="textBoxImagePath" Text="Images/yourimage.jpg" Width="300" Margin="0,5,0,10"/>
 
             <!-- Basic Stats -->
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10" HorizontalAlignment="Left">
@@ -131,8 +131,8 @@
 
 
             <ComboBox x:Name="comboBoxFinesse" Text="Finesse or not" Width="120" Height="30" Margin="0,5,0,20">
-                <ComboBoxItem Content="Yes"/>
-                <ComboBoxItem Content="No"/>
+                <ComboBoxItem Content="Finesse Yes"/>
+                <ComboBoxItem Content="Finesse No"/>
             </ComboBox>
             <!-- Save Button -->
             <Button Content="Save Monster" Width="150" Height="40" Click="Button_Click" HorizontalAlignment="Center"/>
